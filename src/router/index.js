@@ -1,11 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Home from '../views/Home.vue'
+import SignUpPage from '../views/SignUpPage.vue';
+import AlbumDetailsPage from '../views/AlbumDetailsPage.vue';
+import AlbumsPage from '../views/AlbumsPage.vue';
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: Home
+  },
+  {
+    path:'/signup',
+    name: 'SignUpPage',
+    component: SignUpPage
+  },
+  {
+    path: '/album/:id',
+    name: 'AlbumDetailsPage',
+    component: AlbumDetailsPage,
+    meta: {requiresAuth: true}
+  },
+  {
+    path: '/albums',
+    name: 'AlbumsPage',
+    component: AlbumsPage,
+    meta: {requiresAuth: true}
   },
   {
     path: '/about',

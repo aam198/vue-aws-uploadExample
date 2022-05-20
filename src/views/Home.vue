@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-
-    <authenticator>
+    <LogIn />
+    <!-- <authenticator>
       <template>
         <h1>Hello!</h1>
         <button @click="signOut">Sign Out</button>
       </template>
-    </authenticator>
+    </authenticator> -->
 
     
   </div>
@@ -14,11 +14,12 @@
 
 <script>
 // @ is an alias to /src
-
+import LogIn from '@/components/LogIn.vue';
 
 export default {
   name: 'HomeView',
   components: {
+    LogIn
     
   }
 }

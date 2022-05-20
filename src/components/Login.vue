@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+
 <template>
   <div>
     <form class="flex flex-col items-center" @submit.prevent="login">
@@ -30,6 +32,7 @@
 import {mapActions} from 'vuex';
 
 export default {
+  name: 'LogIn',
   data: () => ({
     username: "",
     password: "",
