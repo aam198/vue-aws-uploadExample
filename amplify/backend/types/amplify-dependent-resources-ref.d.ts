@@ -10,5 +10,17 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientID": "string",
             "CreatedSNSRole": "string"
         }
+    },
+    "storage": {
+        "AmplifyPhotoStorage": {
+            "BucketName": "string",
+            "Region": "string"
+        }
+    },
+    "api": {
+        "AmplifyPhotosApi": {
+            "GraphQLAPIIdOutput": "string",
+            "GraphQLAPIEndpointOutput": "string"
+        }
     }
 }

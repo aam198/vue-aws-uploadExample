@@ -7,7 +7,22 @@ import Amplify from 'aws-amplify';
 import '@aws-amplify/ui-vue';
 import aws_exports from './aws-exports';
 import '@aws-amplify/ui-vue/styles.css';
+import {
+  applyPolyfills,
+  defineCustomElements,
+} from '@aws-amplify/ui-components/loader';
 
 Amplify.configure(aws_exports);
 
-createApp(App).use(store).use(router).mount('#app')
+applyPolyfills().then(() => {
+  defineCustomElements(window);
+});
+
+
+const app = createApp(App);
+app.use(store)
+app.use(router)
+app.config.compilerOptions.isCustomElement = (tag) => tag.startsWith('amplify-');
+app.mount('#app')
+
+
