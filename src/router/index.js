@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import SignUpPage from '../views/SignUpPage.vue';
 import AlbumDetailsPage from '../views/AlbumDetailsPage.vue';
 import AlbumsPage from '../views/AlbumsPage.vue';
+import { Auth } from 'aws-amplify';
 
 const routes = [
   {
@@ -40,6 +41,24 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+// Router guard, so that no one can go to pages unless they are logged in.
+// beforeEach router you can do many things in there.
+
+router.beforeEach(async (to, from, next) => {
+  // requiresAuth is looking for the meta information that was declared within the path above. It is looking to have a match of true  
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const isAuthenticated = await Auth.currentUserInfo();
+  // If one is not true out of both then it will take you back to signup
+  if(requiresAuth && !isAuthenticated){
+    // next() is middleware to go home
+    next("/")
+  } 
+  // If requiresAuth and isAuthenticated is true then go to the 'albums'
+  else {
+    next()
+  }
 })
 
 export default router

@@ -1,6 +1,7 @@
 import { Auth } from "aws-amplify";
 
 export const auth = {
+
   namespaced: true,
   state: { user: null },
   mutations: {
@@ -13,12 +14,14 @@ export const auth = {
       commit("setUser", null);
       return await Auth.signOut();
     },
-    async login({ commit }, {username, password}) {
+
+    async login({ commit }, { username, password }) {
       try{
         await Auth.signIn({
           username,
           password
         });
+        
         // Grabs the userID 
         const userInfo = await Auth.currentUserInfo();
         commit("setUser", userInfo);
@@ -56,7 +59,7 @@ export const auth = {
       }
     },
     async authAction({ commit }){
-      // When the app loads
+      // When the app loads it checks
       const userInfo = await Auth.currentUserInfo();
       commit("setUser", userInfo);
     }

@@ -50,6 +50,8 @@ export default {
           username: this.username,
           password: this.password,
         });
+        // After user logs in with username and password it will then be sent with the router 
+        this.$router.push('/albums');
       }
       catch(error){
         this.error = error;
