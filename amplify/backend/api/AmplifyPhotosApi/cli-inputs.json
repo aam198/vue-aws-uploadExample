@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "AmplifyPhotosApi",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/aam198/dev/a-vue-aws-photobook/amplify/backend/api/AmplifyPhotosApi/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authamplifyphotobookf103b204"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AWS_IAM"
+      }
+    ]
+  }
+}
