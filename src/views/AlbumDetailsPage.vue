@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  mounted() {
+  async mounted() {
     this.getPhotos();
   },
   data: () => ({
@@ -73,6 +73,7 @@ export default {
       this.photos = album.data.getAlbum.photos.items;
       this.albumName = album.data.getAlbum.name;
     },
+    
   },
   computed: {
     id() {

@@ -28,7 +28,7 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
   // to list the albums as soon as page loads
@@ -42,7 +42,7 @@ export default {
   methods: {
     // For when the button is chosen to list the album details.
     openAlbumDetail(album){
-      this.$router.push('/album/${album.id}')
+      this.$router.push(`/album/${album.id}`)
     },
     async createAlbum(){
       this.error = ''
