@@ -26,19 +26,25 @@
       <div class="shadow-xl ml-4 mt-4 w-4/12" v-for="(photo, idx) in photos" :key="idx">
         <amplify-s3-image
           level="protected"
-          :img-key="photo.fullsize.key"
+          :img-key="photo.thumbnail ? photo.fullsize.key : photo.fullsize.key"
           class="w-4/12"
         ></amplify-s3-image>
-        <!-- <div v-if="photo.createdAt && photo.gps">
+        <div v-if="photo.createdAt">
           <ul>
             <li>Created At {{ photo.createdAt }}</li>
-            <li>
+            <li v-if="photo.gps">
               latitude
               {{ photo.gps.latitude }}
             </li>
-            <li>longitude At {{ photo.gps.longitude }}</li>
+            <li v-else>
+              Latitude At: N/A
+            </li>
+            <li v-if="photo.gps">longitude At {{ photo.gps.longitude }}</li>
+            <li v-else>
+              Longitude At: N/A
+            </li>
           </ul>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
